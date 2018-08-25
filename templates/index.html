@@ -47,7 +47,7 @@
   <body>
     <div class="container">
       <div class="inner-container">
-        <img src="{{ url_for('static',filename='logo.png') }}">
+        <img src="{{ url_for('static',filename='logo.png') }}" id="logo">
         <!-- <h1 class="title">Chi<span class="largeChar">P</span>ic</h1> -->
         <form method=POST enctype=multipart/form-data action="/">
             <input type=file name=photo id="addPhoto" onchange="previewImage();" style="display: none;" multiple />
