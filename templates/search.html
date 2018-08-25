@@ -39,6 +39,9 @@
       });
 
       function addToTable(data) {
+        var errorMsg = document.getElementById('error-message');
+        errorMsg.styles.display = 'none';
+
         var partNumber = data.digikeyPartNumber;
         var productDescription = data.productDescription;
         var familyText = data.familyText;
@@ -96,6 +99,7 @@
   <body>
     <div class="container">
       <!-- {{ value }} -->
+      <h1 id="error-message">No results found.</h1>
       <div class="tableContainer">
         <table id="chipTable"></table>
       </div>
