@@ -32,17 +32,18 @@ body {
 
 }
 
-#pdfCheckbox {
+/*#pdfCheckbox {
 	margin-top: 1em;
 }
-
+*/
 #submitButton {
 	padding-left: 2em;
 	padding-right: 2em;
 }
 
 #imagePreview {
-	margin-top: 1em;
+	margin-top: 0.2em;
+	margin-bottom: 0.2em;
 }
 
 .tableContainer {
