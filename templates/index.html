@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- styles -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+      function previewImage() {
+        $('#imagePreview').empty();
+
+        var fileInput = document.getElementById('addPhoto');
+        var numFiles = fileInput.files.length;
+
+        for (i = 0 ; i < numFiles ; i ++) {
+          var file = fileInput.files[i];
+          var reader  = new FileReader();
+
+          reader.onload = function(e)  {
+              var col = document.createElement("div");
+              var image = document.createElement("img");
+
+              image.src = e.target.result;
+              image.width = 100;
+              image.height = 100;
+
+              var preview = document.getElementById('imagePreview');
+              preview.appendChild(image);
+           }
+           reader.readAsDataURL(file);
+        }
+
+      };
+
+      
+    </script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="inner-container">
+        <h1 class="title">Chi<span class="largeChar">P</span>ic</h1>
+        <form method=POST enctype=multipart/form-data action="/">
+            <input type=file name=photo id="addPhoto" onchange="previewImage();" style="display: none;" multiple />
+            <input class="btn btn-primary" type="button" value="Select images" onclick="document.getElementById('addPhoto').click();" />
+
+            <div id="imagePreview">
+              <div class="row"></div>
+            </div>
+
+            <input id="pdfCheckbox" name="pdfCheckbox" value="yesPdf" type="checkbox">Save as PDF<br>
+            <input id="submitButton" class="btn btn-primary" type="submit" />
+        </form>
+      </div>
+    </div>
+  </body>
+
+</html>

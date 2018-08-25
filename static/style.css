@@ -1,0 +1,56 @@
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  font-family: 'Raleway', sans-serif;
+}
+
+.title {
+	font-weight: bold;
+	font-size: 4em;
+}
+
+.largeChar {
+	/*font-size: 1.3em;*/
+}
+
+.container {
+	text-align: center;
+	width: 70%;
+	margin: 0 auto;
+	align-items: center;
+	display: flex;
+	min-height: 100%
+}
+
+.inner-container {
+	margin: 0 auto;
+
+}
+
+#pdfCheckbox {
+	margin-top: 1em;
+}
+
+#submitButton {
+	padding-left: 2em;
+	padding-right: 2em;
+}
+
+#imagePreview {
+	margin-top: 1em;
+}
+
+.tableContainer {
+	margin: 0 auto;
+	text-align: center;
+}
+
+#chipTable {
+	margin: 0 auto;
+	border: 1px solid black;
+}
