@@ -27,6 +27,7 @@
               url: apiURL,
               type: "GET",
               dataType: 'json',
+              async: false,
               success: function(response) {
                 numSearches ++;
                 console.log('Searches ' + numSearches);
