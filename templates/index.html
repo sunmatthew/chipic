@@ -9,11 +9,17 @@
 
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <script type="text/javascript">
+      $(document).ready(function () {
+          $('#logo').css('display', 'none');
+          $('#logo').fadeIn(2000);
+          $('#uploadForm').css('display', 'none');
+          $('#uploadForm').fadeIn(2500);
+      });
       function previewImage() {
         $('#imagePreview').empty();
 
@@ -51,7 +57,7 @@
       <div class="inner-container">
         <img src="{{ url_for('static',filename='logo.png') }}" width = 500 id="logo">
         <!-- <h1 class="title">Chi<span class="largeChar">P</span>ic</h1> -->
-        <form method=POST enctype=multipart/form-data action="/">
+        <form method=POST enctype=multipart/form-data action="/" id="uploadForm">
             <input type=file name=photo id="addPhoto" onchange="previewImage();" style="display: none;"/>
             <input class="btn btn-primary" type="button" value="Select image" onclick="document.getElementById('addPhoto').click();" />
 
