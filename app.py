@@ -8,7 +8,7 @@ from test import GetStringFromImage
 app = Flask(__name__)
 app.config['UPLOAD_PATH'] = 'static/img'
 
-@app.route('/', methods=['POST'])
+@app.route('/', methods=['GET','POST'])
 def upload_file():
     if request.method == 'POST' and 'photo' in request.files:
     	for f in request.files.getlist('photo'):
