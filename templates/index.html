@@ -30,6 +30,8 @@
 
               image.src = e.target.result;
               image.width = 200;
+              image.margin = 100;
+              image.hspace = 20;
               //image.height = 100;
 
               var preview = document.getElementById('imagePreview');
@@ -47,7 +49,8 @@
   <body>
     <div class="container">
       <div class="inner-container">
-        <h1 class="title">Chi<span class="largeChar">P</span>ic</h1>
+        <img src="{{ url_for('static',filename='logo.png') }}" width = 500>
+        <!-- <h1 class="title">Chi<span class="largeChar">P</span>ic</h1> -->
         <form method=POST enctype=multipart/form-data action="/">
             <input type=file name=photo id="addPhoto" onchange="previewImage();" style="display: none;" multiple />
             <input class="btn btn-primary" type="button" value="Select images" onclick="document.getElementById('addPhoto').click();" />
@@ -56,7 +59,7 @@
               <div class="row"></div>
             </div>
 
-            <input id="pdfCheckbox" name="pdfCheckbox" value="yesPdf" type="checkbox">Save as PDF<br>
+            <!-- <input id="pdfCheckbox" name="pdfCheckbox" value="yesPdf" type="checkbox">Save as PDF<br> -->
             <input id="submitButton" class="btn btn-primary" type="submit" />
         </form>
       </div>
