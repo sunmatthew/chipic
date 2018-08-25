@@ -29,8 +29,10 @@
               var image = document.createElement("img");
 
               image.src = e.target.result;
-              image.width = 100;
-              image.height = 100;
+              image.width = 200;
+              image.margin = 100;
+              image.hspace = 20;
+              //image.height = 100;
 
               var preview = document.getElementById('imagePreview');
               preview.appendChild(image);
@@ -47,7 +49,7 @@
   <body>
     <div class="container">
       <div class="inner-container">
-        <img src="{{ url_for('static',filename='logo.png') }}" id="logo">
+        <img src="{{ url_for('static',filename='logo.png') }}" width = 500 id="logo">
         <!-- <h1 class="title">Chi<span class="largeChar">P</span>ic</h1> -->
         <form method=POST enctype=multipart/form-data action="/">
             <input type=file name=photo id="addPhoto" onchange="previewImage();" style="display: none;" multiple />
