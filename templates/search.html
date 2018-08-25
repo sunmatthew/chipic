@@ -18,6 +18,8 @@
           var ocrResults = unescape('{{ value }}');
           var parsedResults = parseOCRResults(ocrResults);
 
+          var numSearches = 0;
+
           for (i = 0 ; i < parsedResults.length ; i ++) {
             var apiURL = 'https://chipic-digikey.herokuapp.com/' + parsedResults[i] + '/0';
 
@@ -26,6 +28,9 @@
               type: "GET",
               dataType: 'json',
               success: function(response) {
+                numSearches ++;
+                                console.log('Searches ' + numSearches);
+
                 console.log(response);
                 addToTable(response);
               },
@@ -36,11 +41,14 @@
             
             console.log(parsedResults[i]);
           }
+
+          if (numSearches == 0) {
+            console.log('searches ' + numSearches);
+            $('#error-message').show();
+          }
       });
 
       function addToTable(data) {
-        var errorMsg = document.getElementById('error-message');
-        errorMsg.styles.display = 'none';
 
         var partNumber = data.digikeyPartNumber;
         var productDescription = data.productDescription;
@@ -94,7 +102,7 @@
   <body>
     <div class="container">
       <!-- {{ value }} -->
-      <h1 id="error-message">No results found.</h1>
+      <h1 id="error-message" style="display: none;">No results found.</h1>
       <div class="tableContainer">
         <table id="chipTable"></table>
       </div>
