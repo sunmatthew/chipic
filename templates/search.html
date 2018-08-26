@@ -46,25 +46,7 @@
               }
             });
 
-            if (tryAgain) {
-              console.log("SEARCH AGAIN!");
-              $.ajax({
-                url: apiURL,
-                type: "GET",
-                dataType: 'json',
-                async: false,
-                success: function(response) {
-                  numSearches ++;
-                  console.log('Searches ' + numSearches);
-                  console.log(response);
-                  addToTable(response);
-                },
-                error : function(response) {
-                  tryAgain = true;
-                  console.log('Error!');
-                }
-              });
-            }
+            
             
             console.log(parsedResults[i]);
           }
@@ -125,7 +107,9 @@
 
       function manualSearch() {
         console.log('Doing manual search');
-        
+        $('#manualSearchButton').hide();
+        $('#correctSearchForm').show();
+
       }
     </script>
   </head>
@@ -135,19 +119,20 @@
       <!-- {{ value }} -->
       <h1 id="error-message" style="display: none;">No results found.<br>We searched for the part numbers: {{value}}</h1><br>
 
-<!--       <form action="/">
+      <form action="/" style="display: none;" id="correctSearchForm">
         <input id="correctionInput" type="text" placeholder="Enter correction here..."/> 
         <input type="submit" value="Search" />
-      </form> -->
+      </form>
 
       <div class="tableContainer" id="tableContainer">
         <table id="chipTable" style="margin-bottom: 0.5em;"></table>
       </div>
     </div>
 
-
-    <form action="/home">
+    <form>
       <button id="manualSearchButton" class="btn btn-primary" onclick="manualSearch()">Manual Search</button>
+    </form>
+    <form action="/home">
       <input class="btn btn-primary" type="submit" value="Return to home"/>
     </form>
   </body>
