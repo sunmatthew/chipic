@@ -56,6 +56,10 @@ body {
 	border: 1px solid black;
 }
 
+.chip-row {
+	
+}
+
 #logo {
 	max-width: 100%;
 	height: auto;
