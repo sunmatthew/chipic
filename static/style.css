@@ -49,15 +49,17 @@ body {
 .tableContainer {
 	margin: 0 auto;
 	text-align: center;
+	display: block;
 }
 
 #chipTable {
 	margin: 0 auto;
 	border: 1px solid black;
+	margin-bottom: 1em;
 }
 
 .chip-row {
-	
+
 }
 
 #logo {
@@ -67,4 +69,16 @@ body {
 
 #error-message {
 	display: none;
+}
+
+#homeButton {
+	display: block;
+}
+
+#correctionInput {
+	padding: 2em;
+}
+
+#manualSearchButton {
+	margin-bottom: 4em;
 }
