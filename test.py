@@ -34,14 +34,13 @@ def GetStringFromImage(image):
 		commonMistakes[line[0]] = line[1]
 		commonMistakes[line[1]] = line[0]
 
-	print("here??")
 #	for str in commonMistakes:
 #		print(str)
 	try:
 		output = pytesseract.image_to_string(Image.open(image), lang=None, config='-c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 --psm 8 --load_system_dawg 0 --load_freq_dawg 0')
 	except Exception:
 		traceback.print_exc()
-#	print(output)
+	print(output)
 #	file = open("testOutput.txt","w")
 #	file.write(output)
 #	file.write("\n")
