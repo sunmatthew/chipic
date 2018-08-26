@@ -15,7 +15,7 @@ def upload_file():
     		filename = secure_filename(f.filename)
     		f.save(os.path.join(app.config['UPLOAD_PATH'], filename))
     		print('OCR..')
-    		print(GetStringFromImage(f))
+    		#print(GetStringFromImage(f))
 
     		ocrResults = GetStringFromImage(f)
     		# session['ocrResults'] =  ocrResults
