@@ -119,19 +119,19 @@
       <!-- {{ value }} -->
       <h1 id="error-message" style="display: none;">No results found.<br>We searched for the part numbers: {{value}}</h1><br>
 
-      <form action="/" style="display: none;" id="correctSearchForm">
-        <input id="correctionInput" type="text" placeholder="Enter correction here..."/> 
-        <input type="submit" value="Search" />
-      </form>
+      
 
       <div class="tableContainer" id="tableContainer">
         <table id="chipTable" style="margin-bottom: 0.5em;"></table>
       </div>
     </div>
 
-    <form>
-      <button id="manualSearchButton" class="btn btn-primary" onclick="manualSearch()">Manual Search</button>
-    </form>
+    <button id="manualSearchButton" class="btn btn-primary" onclick="manualSearch()">Manual Search</button>
+    <form action="/search" method="POST" style="display: none;" id="correctSearchForm">
+        <input id="correctionInput" type="text" name="correction" placeholder="Enter correction here..."/> 
+        <input type="submit" value="Search" />
+      </form>
+
     <form action="/home">
       <input class="btn btn-primary" type="submit" value="Return to home"/>
     </form>

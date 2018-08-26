@@ -26,11 +26,10 @@ def upload_file():
 
 @app.route('/search', methods=['GET', 'POST'])
 def search():
-	# ocrResults = request.args['ocrResults']
-	# ocrResults = session['ocrResults']
-	# print('OCR RESULTS...')
-	# print(ocrResults)
-	return render_template('search.html')
+    if request.method == 'POST':
+        result = '[' + request.form['correction'] + ']'
+        return render_template('search.html', value=result)
+    return render_template('search.html')
 
 @app.route('/home')
 def home():
