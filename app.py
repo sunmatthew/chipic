@@ -11,15 +11,16 @@ app.config['UPLOAD_PATH'] = 'static/img'
 @app.route('/', methods=['GET','POST'])
 def upload_file():
     if request.method == 'POST' and 'photo' in request.files:
-    	for f in request.files.getlist('photo'):
-    		filename = secure_filename(f.filename)
-    		f.save(os.path.join(app.config['UPLOAD_PATH'], filename))
-    		print('OCR..')
-    		#print(GetStringFromImage(f))
-
-    		ocrResults = GetStringFromImage(f)
-    		# session['ocrResults'] =  ocrResults
-    		return render_template('search.html', value=ocrResults)
+        checkStatus = request.form['pdfCheckbox']
+        print(checkStatus)
+        for f in request.files.getlist('photo'):
+            filename = secure_filename(f.filename)
+            f.save(os.path.join(app.config['UPLOAD_PATH'], filename))
+            print('OCR..')
+ 
+            ocrResults = GetStringFromImage(f)
+            # session['ocrResults'] =  ocrResults
+            return render_template('search.html', value=ocrResults, pdfStatus=checkStatus)
 	        # run Erick's function here with filename (returns a cropped image)
 	        # run Adam's function here with cropped image (returns an array of strings)
     return render_template('index.html')

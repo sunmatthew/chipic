@@ -18,6 +18,9 @@
           $('#chipTable').css('display', 'none');
           $('#chipTable').fadeIn(2000);          
 
+          var pdfStatus = '{{ pdfStatus }}';
+          console.log('PDF STATUS ' + pdfStatus);
+
           var ocrResults = unescape('{{ value }}');
           var parsedResults = parseOCRResults(ocrResults);
 
@@ -26,7 +29,7 @@
 
           for (i = 0 ; i < parsedResults.length ; i ++) {
             tryAgain = false;
-            var apiURL = 'https://chipic-digikey.herokuapp.com/' + parsedResults[i] + '/0';
+            var apiURL = 'https://chipic-digikey.herokuapp.com/' + parsedResults[i];
 
             console.log("SEARCH ONCE!");
             $.ajax({
@@ -35,9 +38,11 @@
               dataType: 'json',
               async: false,
               success: function(response) {
+                if (pdfStatus == 'yesPdf') {
+                  var datasheet = response.primaryDatasheet;
+                  var win = window.open(datasheet, '_blank');
+                }
                 numSearches ++;
-                console.log('Searches ' + numSearches);
-                console.log(response);
                 addToTable(response);
               },
               error : function(response) {
@@ -126,7 +131,7 @@
       </div>
     </div>
 
-    <button id="manualSearchButton" class="btn btn-primary" onclick="manualSearch()">Manual Search</button>
+    <button style="margin-bottom: 0.3em;" id="manualSearchButton" class="btn btn-primary" onclick="manualSearch()">Manual Search</button>
     <form action="/search" method="POST" style="display: none;" id="correctSearchForm">
         <input id="correctionInput" type="text" name="correction" placeholder="Enter correction here..."/> 
         <input type="submit" value="Search" />
